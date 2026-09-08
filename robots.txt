@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dereckkariuki.github.io/Mama-s-Mwiko/sitemap.xml
