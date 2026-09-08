@@ -158,9 +158,15 @@ Deployment is automatic. `.github/workflows/pages.yml` publishes to GitHub Pages
 on every push to `main`. It copies the site files into `_site/` and uploads that,
 so `menu-source/` and this README are not served as part of the website.
 
-**One-time setup:** Settings → Pages → Build and deployment → Source →
-**GitHub Actions**. Until that is set, the workflow fails at the deploy step
-with "Pages is not enabled for this repository".
+**One-time setup, and it must be done by hand:**
+https://github.com/DereckKariuki/Mama-s-Mwiko/settings/pages → Build and
+deployment → Source → **GitHub Actions**. Then re-run the workflow.
+
+This cannot be automated. `actions/configure-pages` accepts `enablement: true`
+to create the Pages site through the API, but that call needs repository-admin
+rights, which the workflow's `GITHUB_TOKEN` does not carry — it fails with
+"Resource not accessible by integration". Until Pages is switched on, every run
+stops at the Configure Pages step with "Get Pages site failed".
 
 To deploy manually: Actions → "Deploy site to GitHub Pages" → Run workflow.
 
